@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.util.Scanner;
 import java.io.FileInputStream;
 
-public class FunWithFiles {
+public class ReadingTextFileInput {
    
    /**
     * Displays the file given by fname to the screen
