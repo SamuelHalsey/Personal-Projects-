@@ -1,0 +1,24 @@
+/**
+ * A fun strings program
+ * @author Samuel Halsey
+ * @version 20220830
+ */
+import java.util.Scanner;
+
+public class FunWithStringsIntro {
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        // Your code continues from here
+        String name;
+         System.out.print("Enter your name: ");
+         name = input.nextLine();
+         
+         System.out.println("Hello "+ name +"!");
+         System.out.println("Your name is "+name.length()+" letters long.");
+         System.out.println("Your name starts with a "+name.charAt(0)+".");
+         System.out.println("Your name ends with a "+name.charAt(name.length()-1)+".");
+         System.out.println("Goodbye!");
+        input.close();
+    }
+}

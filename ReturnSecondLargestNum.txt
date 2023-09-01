@@ -1,0 +1,31 @@
+/* Online Java Compiler and Editor */
+public class HelloWorld{
+
+public static int second_largest(int[] nums)
+{
+    int sL = 0;
+    int L = 0;
+    
+    for(int j = 0;j<nums.length; j++)
+    {
+    for (int i = 0; i<nums.length; i++)
+    {
+        if (nums[i]>L)
+        {
+       
+            L=nums[i];
+        }
+        if(nums[i]>=sL && nums[i]<L)
+        {
+            sL=nums[i];
+        }
+        }
+    }
+    return sL;
+
+}
+     public static void main(String []args){
+        int[] l = {8,4,112};
+        System.out.println(second_largest(l));
+     }
+}
