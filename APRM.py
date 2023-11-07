@@ -1,5 +1,5 @@
 #Samuel Halsey
-#Automative Repair
+#Automative Repair usying pygui to calculate and list prices of certain services
 import webbrowser
 import time
 from tkinter import *
