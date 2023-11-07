@@ -1,5 +1,5 @@
 /**
- * I am attempting to cipher an alphabet without losing my shit
+ * Decrypting Alphabet using cipher
  * @author Samuel Halsey
  * @version 11182022
  */
