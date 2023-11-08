@@ -1,6 +1,5 @@
 /**
- * A program to calculate the best trajectory of an object to a given distance. I am almost positive
- * I did not complete this in the easiest way becuase this caused way more stress than it should've
+ * A program to calculate the best trajectory of an object to a given distance. I am unsure if this was the most effective strategy,
  * Perhaps an array couldve been used to make this easier but I am not sure
  * 
  * @author Samuel Halsey
