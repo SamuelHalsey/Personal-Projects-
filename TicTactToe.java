@@ -1,9 +1,7 @@
 import java.util.Scanner;
 /*
 A program to simulate tic tac toe
-I would like to preface with an apology 
-if anyone reads this code it might be some the ugliest 
-and worst code I have ever written but at least it runs ;).
+
 */
 public class TicTacToe {
    public static void main(String[] args) {
