@@ -5,35 +5,12 @@ from email.mime.multipart import MIMEMultipart
 from bs4 import BeautifulSoup
 import requests
 import time
-import schedule
-from google.oauth2 import service_account
-
-SCOPES = ['https://www.googleapis.com/auth/gmail.send']
-SERVICE_ACCOUNT_FILE = 'C:\Users\Sam\Downloads\textsender-389214-640f4568aff7.json'  # Update with your service account credentials file
-
-email = "iamoutsideyourhouse333@gmail.com"
-credentials = service_account.Credentials.from_service_account_file(
-    SERVICE_ACCOUNT_FILE, scopes=SCOPES)
-from tkinter import *
-from tkinter.ttk import *
-
-try:
-    import Tkinter as tk
-except:
-    import tkinter as tk
-
 global total
 total = 0
-
 from tkinter import Tk, Label, Button
-
-global phoneNum1
-global message1
-global times1
-
-
+email = "textsender2023@gmail.com"
 class TextSender:
-
+#This was a program used to remotely send texts to phone numbers through a PyGui, unfortunately, it no longer works due to changes in Google's policy on third-party services logging into emails.
     def __init__(self, master):
         self.total = 0
         self.check = "Checked"
@@ -114,8 +91,7 @@ class TextSender:
                                  ('calibri', 10, 'bold'),
                                  foreground='blue')
 
-        # self.enterButton1 = Button(master, text="Enter", command=lambda: self.Message())
-        # self.enterButton1.pack()
+
 
         self.label3 = Label(master, text="Send the Wordle of the Day ")
         self.label3.pack()
@@ -154,7 +130,7 @@ class TextSender:
     def times(self):
         times = self.name_var3.get(
         )
-        times1 = times
+
         return times
 
     def WebScrape(self):
@@ -230,7 +206,7 @@ class TextSender:
 
         with smtplib.SMTP("smtp.gmail.com", 587) as server:
             server.starttls()
-            server.login(email, credentials=credentials)
+            server.login(email, "texter123!?")
         # The server we use to send emails in our case it will be gmail but every email provider has a different smtp
         # and port is also provided by the email provider.
         #  smtp = "smtp.gmail.com"
@@ -264,11 +240,12 @@ class TextSender:
 
         if phoneNum != "" and phoneNum != "1234567890" and wordle != "" and len(phoneNum) == 10:
 
-            # print(self.name)
+
             print("text was sent")
 
             for i in range(self.times()):
                 # server.sendmail(email, '6146986870@txt.att.net', self.FindIp())
+                #addes each and everyone to ensure it sends
                 for i in ("@txt.att.net", "@vtext.com", "@messaging.sprintpcs.com", '@tmomail.net'):
                     sms_gateway = phoneNum + i
 
