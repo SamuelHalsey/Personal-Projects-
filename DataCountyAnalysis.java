@@ -14,6 +14,10 @@ public class DataAnalysisLab {
    
          fileByteStream = new FileInputStream(fname);
          inFS = new Scanner(fileByteStream);
+      }
+      catch (FileNotFoundException e) {
+          System.err.println("ERROR - File "+fname+" not found!");
+        }
          String header = inFS.nextLine();//Gets rid of the first line which is the header
          String[] firstCountPop = new String[numCounties];
          String[] lastCountPop = new String[numCounties];
@@ -66,10 +70,8 @@ public class DataAnalysisLab {
           }
        
         
-      }
-         catch (FileNotFoundException e) {
-          System.out.println("ERROR - File "+fname+" not found!");
-        }
+      
+         
    }
    public static void main(String[] args) {
      Scanner input = new Scanner(System.in);
