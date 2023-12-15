@@ -1,93 +1,98 @@
+
+
+import java.io.IOException;
 import java.util.Scanner;
 /*
-A program to simulate tic tac toe
+A program to simulate tic-tac-toe between two players on one computer
 
 */
 public class TicTacToe {
-   public static void main(String[] args) {
+	
+   public static void main(String[] args) throws IOException  {
       Scanner input = new Scanner(System.in);
+    //Uses this boolean to determine whether or not loop should keep running
+      boolean isGameOver = false;
       int row;
       int col;
       Board board = new Board();
        board.print();
-      while(true)
+      
+       
+      while(!isGameOver)
       {
       
-       System.out.print("x player: Enter row and column numbers:");
-       while(true)
+      
+       while(!board.isFull()&&!isGameOver)
        {
+       System.out.println("x player: Enter row number:");
        row = input.nextInt();
+       System.out.println("x player: Enter column number:");
        col = input.nextInt();
        
-       if(row==0||col==0)
+       while(row==0||col==0||board.setRowCol(row-1,col-1)==false)
        {
-          System.out.println("Incorrect cell. Try again!");
-          System.out.print("Enter row and column numbers:");
-          continue;
+    	   System.out.println("Incorrect Input!");
+    	   System.out.println("x player: Enter row number:");
+           row = input.nextInt();
+           System.out.println("x player: Enter column number:");
+           col = input.nextInt();
           }
-      if(board.setRowCol(row-1,col-1)==false)
-      {
-         System.out.println("Incorrect cell. Try again!");
-          System.out.print("Enter row and column numbers:");
-         continue;
-         }
-       break;
-          }
-       
-      
         board.print();
       if(board.isWin())
       {
          System.out.println("x player wins!\nGoodbye!");
-         break;
+         //Sets boolean to true and breaks the loops
+         isGameOver = true;
+        
          }
       if(board.isFull())
       {
          System.out.println("Board is full!");
+         isGameOver = true;
+         
          }
          
+      if(!isGameOver)
+      {
       board.changePlayer();
       /////////////////////////////////////////////////////////
-       System.out.print("o player: Enter row and column numbers:");
-       while(true)
-       {
-        
-          row = input.nextInt();
+   
+       
+    	   System.out.println("o player: Enter row number:");
+    	   row = input.nextInt();
+    	   System.out.println("o player: Enter column anumber:");
           col = input.nextInt();
           
-          if(row==0||col==0)
+          while(row==0||col==0||board.setRowCol(row-1,col-1)==false)
           {
              System.out.println("Incorrect cell. Try again!");
-             System.out.print("Enter row and column numbers:");
-             continue;
+             
+           System.out.println("o player: Enter row number:");
+      	   row = input.nextInt();
+      	   System.out.println("o player: Enter column anumber:");
+           col = input.nextInt();
+            
          }
-         else if(board.setRowCol(row-1,col-1)==false)
-         {
-             System.out.println("Incorrect cell. Try again!");
-             System.out.print("Enter row and column numbers:");
-            continue;
-            }
-       break;
-          }
-          
-      
       board.print();
       if(board.isWin())
       {
          System.out.println("o player wins!\nGoodbye!");
-         break;
+         isGameOver = true;
          }
       board.changePlayer();
       
       if(board.isFull())
       {
          System.out.println("Board is full!");
+         isGameOver = true;
          }
       }
+       }
+   }
    }
 }
-import java.util.*;
-import java.io.*;
+
+
 
 public class Board {
 
@@ -277,4 +282,5 @@ public class Board {
 	
      }
 }
+
 
