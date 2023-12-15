@@ -1,5 +1,5 @@
 /**
- * Decrypting Alphabet using cipher
+ * Encodes or decodes a ciphered alphabet based on how shifted the alphabet or the text file is.
  * @author Samuel Halsey
  * @version 11182022
  */
@@ -33,7 +33,7 @@ public class SubstitutionCipher {
      * @return the encrypted String as outlined above
      */
     public static String shift(String input, int shift) {
-        StringBuilder sb = new StringBuilder();
+       String shiftedString = "";
         for (int i = 0; i < input.length(); i++) 
         {
             char ch = input.charAt(i);
@@ -44,13 +44,13 @@ public class SubstitutionCipher {
                  {
                  int shifted = (letter+shift)%26;
                   ch = UPPERCASE.charAt(shifted);
-                 sb.append(ch);
+                  shiftedString+=ch;
                  }
                  else if (shift<0)
                  {
                     int shifted=(letter+(shift+26))%26;
                      ch = UPPERCASE.charAt(shifted);
-                 sb.append(ch);
+                shiftedString+=ch;
                     }
                 
               } 
@@ -62,22 +62,22 @@ public class SubstitutionCipher {
                  {
                  int shifted = (letter+shift)%26;
                   ch = LOWERCASE.charAt(shifted);
-                 sb.append(ch);
+                 shiftedString+=ch;
                  }
                  else if (shift<0)
                  {
                     int shifted=(letter+(shift+26))%26;
                      ch = LOWERCASE.charAt(shifted);
-                 sb.append(ch);
+                 shiftedString+=ch;
                     }
             }
             else{
-                sb.append(ch);
+                shiftedString+=ch;
                }
                
             
          }
-        return sb.toString();
+       return shiftedString;
     }
 
     /**
@@ -94,7 +94,7 @@ public class SubstitutionCipher {
      * @return the String entered by the user
      */
     public static String promptForString(Scanner in, String promptMsg) {
-       // Scanner input = new Scanner(System.in);
+      
         System.out.print(promptMsg);
         
         String userResponse = in.nextLine();
@@ -130,25 +130,28 @@ public class SubstitutionCipher {
       FileInputStream fileByteStream = null;
       Scanner inFS = null;   
         try {
-      
-        
       fileByteStream = new FileInputStream(inFile);
       inFS = new Scanner(fileByteStream);
-      File myObj = new File(outFile);
-      FileWriter myWriter = new FileWriter(outFile);
+      PrintWriter out = null;
+      try {
+          out = new PrintWriter(new BufferedWriter(new FileWriter(outFile)));
+      } catch (IOException e) {
+          System.err.println("Invalid file due to " + e);
+      }
+      
+      
       
       while (inFS.hasNextLine()) {
          
        String filedata = inFS.nextLine(); 
-       myWriter.write(shift(filedata,shift)+"\n");
+       out.println(shift(filedata,shift)+"\n");
     }
-     myWriter.close();
+     out.close();
       System.out.println("Finished writing to file.");
-    //  System.out.println("\n");
        return true;
     }
          catch (FileNotFoundException e) {
-          System.out.println("ERROR - File "+inFile+" not found!");
+          System.err.println("ERROR - File "+inFile+" not found!");
           e.printStackTrace();
           return false;
         }
@@ -172,7 +175,7 @@ public class SubstitutionCipher {
      */
     public static char getChoice(Scanner in) {
       
-      boolean correctInput = false;
+   
       
         System.out.print("Enter your choice: ");
         String choice = in.nextLine();
